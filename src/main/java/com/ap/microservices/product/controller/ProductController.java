@@ -8,15 +8,22 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ap.microservices.product.dto.ProductRequest;
+import com.ap.microservices.product.model.Product;
+import com.ap.microservices.product.service.ProductService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/product")
+@RequiredArgsConstructor
 public class ProductController {
 
+	private ProductService productService;
+	
 	@PostMapping()
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void createProduct(@RequestBody ProductRequest productRequest) {
-		
+	public Product createProduct(@RequestBody ProductRequest productRequest) {
+		return productService.createProduct(productRequest);
 	}
 	
 }

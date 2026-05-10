@@ -16,7 +16,7 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	public void createProduct(ProductRequest productRequest) {
+	public Product createProduct(ProductRequest productRequest) {
 		
 		Product product = Product.builder()
 				.name(productRequest.name())
@@ -25,6 +25,7 @@ public class ProductService {
 				.build();
 		productRepository.save(product);
 		log.info("Product Created Successfully");
+		return product;
 	}
 	
 }
